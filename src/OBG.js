@@ -133,20 +133,36 @@
 	 * @param {object} dom : dom element to attach this border.
 	 * @return {string} image data url.
 	 */
-	exports.gen1pxBorder = function(color, alpha, isVertical, isBottomRight, dom) {
+	exports.gen1pxBorder = function() {
 
-		var args = arguments, i = 0, j = 0;
+		var i = 0, j = 0, opts;
 
-		while (i !== arguments.length) {
-			if (i === 2) {
-				i++;
-				break;
+		if (typeof arguments[0] === 'object') {
+			opts = arguments[0];
+		} else {
+			if (arguments[0] && typeof arguments[0] !== 'string') {
+				throw new Error('first argument of gen1pxBorderHorizontal color must be a string.');
 			}
-			args[j] = arguments[i];
-			i++; j++;
+			if (arguments[1] && typeof arguments[1] !== 'number') {
+				throw new Error('second argument of gen1pxBorderHorizontal alpha must be a decimal fraction.');
+			}
+			if (arguments[4] && typeof arguments[4] !== 'object') {
+				throw new Error('fourth argument of gen1pxBorderHorizontal dom must be a dom element.');
+			}
+			opts = {
+				color: arguments[0],
+				alpha: arguments[1],
+				isVertical: arguments[2],
+				dom: arguments[4],
+			};
+			if (opts.isVertical) {
+				opts.isRight = isBottomRight;
+			} else {
+				opts.isBottom = isBottomRight;
+			}
 		}
 
-		if (arguments[2]) {
+		if (opts.isVertical) {
 			return this.gen1pxBorderVertical.apply(this, args);
 		} else {
 			return this.gen1pxBorderHorizontal.apply(this, args);

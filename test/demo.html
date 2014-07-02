@@ -2,31 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>canvas demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0"/>
+
+  <title>OBG demo</title>
+
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
 
   <style type="text/css">
 
-div.ct {
-	position: relative;
+body {
+	background-color: #fff;
+}
+
+p {
+	font-size: 10px;
+}
+
+.label1 {
+	position: absolute;
+	top: 10px;
+}
+
+.label2 {
+	position: absolute;
+	top: 20px;
 }
 
 div.border-image-1px {
 	position: absolute;
-	width: 500px;
-	height: 500px;
-	background-color: #fff;
+	width: 100px;
+	height: 100px;
+	background-color: #eee;
+}
+
+div.border1px {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background-color: #eee;
 }
 
 #testDiv1 {
-	left: 100px;
-	top: 100px;
+	left: 10px;
+	top: 60px;
 }
 
 #testDiv2 {
+	left: 10px;
+	top: 170px;
+}
+
+#testDiv3 {
+	left: 10px;
+	top: 280px;
+}
+
+#testDiv4 {
+	left: 10px;
+	top: 390px;
+}
+
+#testDiv5 {
 	border-top: 1px solid #00aa00;
-	left: 100px;
-	top: 120px;
+	left: 120px;
+	top: 60px;
+}
+
+#testDiv6 {
+	border-bottom: 1px solid #00aa00;
+	left: 120px;
+	top: 170px;
+}
+
+#testDiv7 {
+	border-left: 1px solid #00aa00;
+	left: 120px;
+	top: 280px;
+}
+
+#testDiv8 {
+	border-right: 1px solid #00aa00;
+	left: 120px;
+	top: 390px;
 }
 
 
@@ -39,18 +97,26 @@ div.border-image-1px {
 
 <script src="./OBG.js">
 </script>
+<p class="label1">left : 1 device pixel border</p>
+<p class="label2">right: border: 1px solid #00aa00</p>
 
-<div class="ct">
-	<div class="border-image-1px" id="testDiv1"></div>
-	<div class="border-image-1px" id="testDiv2"></div>
-</div> 
+<div class="border-image-1px" id="testDiv1"></div>
+<div class="border-image-1px" id="testDiv2"></div>
+<div class="border-image-1px" id="testDiv3"></div>
+<div class="border-image-1px" id="testDiv4"></div>
+
+
+<div class="border1px" id="testDiv5"></div>
+<div class="border1px" id="testDiv6"></div>
+<div class="border1px" id="testDiv7"></div>
+<div class="border1px" id="testDiv8"></div>
 
 <script type="text/javascript">
 	
 	OBG.gen1pxBorderHorizontal('#00aa00', null, false, document.getElementById('testDiv1'));
-	// OBG.gen1pxBorderHorizontal('#00aa00', null, true, document.getElementById('testDiv'));
-	// console.log(OBG.gen1pxBorderVertical('#00aa00', null, false, document.getElementById('testDiv')));
-	// OBG.gen1pxBorderVertical('#00aa00', null, true, document.getElementById('testDiv'));
+	OBG.gen1pxBorderHorizontal('#00aa00', null, true, document.getElementById('testDiv2'));
+	OBG.gen1pxBorderVertical('#00aa00', null, false, document.getElementById('testDiv3'));
+	OBG.gen1pxBorderVertical('#00aa00', null, true, document.getElementById('testDiv4'));
 	console.log('rect: ', OBG.genRect(100, 100, '#00aa00', 1));
 
 </script>
