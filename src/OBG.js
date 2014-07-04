@@ -227,7 +227,7 @@
 		_clearCanvas();
 		if (dom) {
 			dom.style.backgroundImage = 'url('+ dataUrl + ')';
-			dom.style.backgroundSize = '1px';
+			dom.style.backgroundSize = '1px 1px';
 			dom.style.backgroundPosition = (isBottom ? 'left bottom' : 'left top');
 			dom.style.backgroundRepeat = 'repeat-x';
 		}
@@ -292,7 +292,7 @@
 		_clearCanvas();
 		if (dom) {
 			dom.style.backgroundImage = 'url('+ dataUrl + ')';
-			dom.style.backgroundSize = '1px';
+			dom.style.backgroundSize = '1px 1px';
 			dom.style.backgroundPosition = (isRight ? 'right top' : 'left top');
 			dom.style.backgroundRepeat = 'repeat-y';
 		}
