@@ -5,7 +5,7 @@ OBG
 
 
 Usage
-===
+---
 
 * Generate a background-image data url, e.g. generate a horizontal border on the bottom:
 ```
@@ -78,7 +78,7 @@ OBG.gen1pxBorderHorizontal(opts);
 ```
 
 API
-===
+---
 
 ### genRect
 gen dataUrl for a rectangle.
