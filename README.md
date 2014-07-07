@@ -104,7 +104,7 @@ pass opts object as a parameter, or pass attributes of opts in the order showed 
  * alpha
  * isVertical
  * isBottom/isRight: if isVertical is true, pass 'isRight', else pass 'isBottom' as a attribute of opts.
- * dom: the dom element you want to attach a 1 pixle border to.
+ * dom: the dom element you want to attach a 1 pixel border to.
 e.g.:
 ```
 var dom = document.getElementById('t-div');
@@ -118,4 +118,44 @@ var opts = {
   dom: dom,
 };
 OBG.gen1pxBorder(opts);
+```
+
+* gen1pxBorderHorizontal: gen dataUrl of 1 device pixel horizontal border. or set 1 device pixel horizontal border for the dom element you passed in.
+pass opts object as a parameter, or pass attributes of opts in the order showed bellow.
+ * color
+ * alpha
+ * isBottom: is this border border-bottom or not? 
+ * dom: the dom element you want to attach a 1 pixel horizontal border to.
+e.g.:
+```
+var dom = document.getElementById('t-div');
+OBG.gen1pxBorderHorizontal('#333', 0.5, true, dom);
+OBG.gen1pxBorderHorizontal('#333', 0.5, null, dom);
+var opts = {
+  color: '#333',
+  alpha: 0.5,
+  isBottom: true,
+  dom: dom,
+};
+OBG.gen1pxBorderHorizontal(opts);
+```
+
+* gen1pxBorderVertical: gen dataUrl of 1 device pixel Vertical border. or set 1 device pixel Vertical border for the dom element you passed in.
+pass opts object as a parameter, or pass attributes of opts in the order showed bellow.
+ * color
+ * alpha
+ * isRight: is this border border-right or not? 
+ * dom: the dom element you want to attach a 1 pixel Vertical border to.
+e.g.:
+```
+var dom = document.getElementById('t-div');
+OBG.gen1pxBorderVertical('#333', 0.5, true, dom);
+OBG.gen1pxBorderVertical('#333', 0.5, null, dom);
+var opts = {
+  color: '#333',
+  alpha: 0.5,
+  isRight: true,
+  dom: dom,
+};
+OBG.gen1pxBorderVertical(opts);
 ```
