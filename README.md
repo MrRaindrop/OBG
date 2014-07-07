@@ -9,21 +9,22 @@ Usage
 
 * Generate a background-image data url, e.g. generate a horizontal border on the bottom:
 ```
-OBG.gen1pxBorder('#333', null, false, true, null);
+var dataUrl;
+dataUrl = OBG.gen1pxBorder('#333', null, false, true, null);
 // or:
-OBG.gen1pxBorder('#333', null, null, true);
+dataUrl = OBG.gen1pxBorder('#333', null, null, true);
 // or:
 var opts = {
   color: '#333',
   isVertical: false,
   isBottom: true
 };
-OBG.gen1pxBorder(opts);
+dataUrl = OBG.gen1pxBorder(opts);
 ```
 then set css like this:
 ```
-background-size: 1px;
-background-image: url(``generated data url``);
+background-size: 1px 1px;
+background-image: url({{dataUrl}});
 background-position: left bottom;
 background-repeat: repeat-x;
 ```
@@ -50,16 +51,71 @@ OBG.gen1pxBorder(opts);
 var dom = document.getElementById('t-div');
 OBG.gen1pxBorderVertical('#333', 0.5, false[, dom]);
 // or:
-OBG.gen1pxBorderVertical('#333', 0.5, null, true[, dom]);
+OBG.gen1pxBorderVertical('#333', 0.5, null[, dom]);
 // or:
 var opts = {
   color: '#333',
   alpha: 0.5,
-  isVertical: true,
-  isBottom: true
+  isRight: true
   [,dom: dom]
 };
 OBG.gen1pxBorderVertical(opts);
 ```
 
-OBG.gen1pxBorder()
+```
+var dom = document.getElementById('t-div');
+OBG.gen1pxBorderHorizontal('#333', null, false[, dom]);
+// or:
+OBG.gen1pxBorderHorizontal('#333', 1, null[, dom]);
+// or:
+var opts = {
+  color: '#333',
+  alpha: 1,
+  isBottom: false
+  [,dom: dom]
+};
+OBG.gen1pxBorderHorizontal(opts);
+```
+
+API
+===
+
+* genRect: gen dataUrl for a rectangle.
+pass opts object as a parameter, or pass attributes of opts in the order showed bellow.
+opts:
+ * width
+ * height
+ * color: a hexadecimal string, e.g. '#f7f7f7'
+ * alpha
+e.g.:
+```
+OBG.genRect(100, 100, '#f7f7f7', 0.7);
+OBG.genRect({
+  width: 100,
+  height: 100,
+  color: '#f7f7f7',
+  alpha: 0.7
+});
+```
+
+* gen1pxBorder: gen dataUrl of 1 device pixel border. or set 1 device pixel border for the dom element you passed in.
+pass opts object as a parameter, or pass attributes of opts in the order showed bellow.
+ * color
+ * alpha
+ * isVertical
+ * isBottom/isRight: if isVertical is true, pass 'isRight', else pass 'isBottom' as a attribute of opts.
+ * dom: the dom element you want to attach a 1 pixle border to.
+e.g.:
+```
+var dom = document.getElementById('t-div');
+OBG.gen1pxBorder('#333', 0.5, false, true, dom);
+OBG.gen1pxBorder('#333', 0.5, null, true, dom);
+var opts = {
+  color: '#333',
+  alpha: 0.5,
+  isVertical: false,
+  isBottom: true,
+  dom: dom,
+};
+OBG.gen1pxBorder(opts);
+```

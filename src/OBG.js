@@ -44,13 +44,16 @@
 
 			var w, h;
 
-			w = width || 100;
-			h = height || 100;
+			w = width || DEFAULT_CANVAS_WIDTH;
+			h = height || DEFAULT_CANVAS_HEIGHT;
 
 			canvas = document.createElement('canvas');
 			document.body.appendChild(canvas);
 			canvas.width = w;
 			canvas.height = h;
+			canvas.style.position = 'absolute';
+			canvas.style.top = '100px';
+			canvas.style.left = '100px'
 			canvasContext = canvas.getContext("2d");
 			
 		},
@@ -129,7 +132,7 @@
 	 * @param {string} color : color of this border.
 	 * @param {number} alpha : alpha value of this border.
 	 * @param {boolean} isVertical : this border is vertical or not.
-	 * @param {boolean} isBottomRight : this border on bottom/Right of dom or not.
+	 * @param {boolean} isBottom/isRight : this border on bottom/Right of dom or not.
 	 * @param {object} dom : dom element to attach this border.
 	 * @return {string} image data url.
 	 */
@@ -296,6 +299,24 @@
 			dom.style.backgroundPosition = (isRight ? 'right top' : 'left top');
 			dom.style.backgroundRepeat = 'repeat-y';
 		}
+		return dataUrl;
+	};
+
+	exports.genCheckMark = function(size) {
+		var size = size || 24, color, alpha, dataUrl;
+		_initCanvas(32, 32);
+		color = '#27ae61';
+		alpha = 1;
+
+		canvasContext.rotate(-56 * Math.PI / 180);
+		canvasContext.fillStyle = color;
+		canvasContext.globalAlpha = alpha;
+		canvasContext.fillRect(-8, 20, 3, 8);
+		canvasContext.fillRect(-5, 25, 13, 3);
+		canvasContext.globalAlpha = 0;
+		canvasContext.fillRect(-5, 20, 13, 5);
+		dataUrl = canvas.toDataURL();
+		_clearCanvas();
 		return dataUrl;
 	};
 

@@ -95,7 +95,7 @@ div.border1px {
 <body>
  
 
-<script src="./OBG.js">
+<script src="../src/OBG.js">
 </script>
 <p class="label1">left : 1 device pixel border</p>
 <p class="label2">right: border: 1px solid #00aa00</p>
@@ -118,6 +118,7 @@ div.border1px {
 	OBG.gen1pxBorderVertical('#00aa00', null, false, document.getElementById('testDiv3'));
 	OBG.gen1pxBorderVertical('#00aa00', null, true, document.getElementById('testDiv4'));
 	console.log('rect: ', OBG.genRect(100, 100, '#00aa00', 1));
+	console.log('checkMark:', OBG.genCheckMark());
 
 </script>
 
